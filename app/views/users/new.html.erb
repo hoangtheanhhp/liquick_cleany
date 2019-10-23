@@ -1,0 +1,36 @@
+<%= form_for @user, html: {class: "form-horizontal col col-lg-6"} do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "User Name" %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Enter your username" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, "Email" %>
+    <%= f.email_field :email, class: "form-control", placeholder: "Enter your Email" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password, class: "form-control", placeholder: "Enter your Password" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, "Password Confirmation" %>
+    <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm your Password" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :phone, "Phone" %>
+    <%= f.number_field :phone, class: "form-control", placeholder: "Enter your Phone" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :address, "Address" %>
+    <%= f.text_field :address, class: "form-control", placeholder: "Enter your Address" %>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Register</button>
+  <div class="text-right">Have user account?
+    <%= link_to "Login", signin_path %>
+  </div>
+<% end %>

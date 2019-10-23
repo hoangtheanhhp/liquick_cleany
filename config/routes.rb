@@ -12,4 +12,11 @@ Rails.application.routes.draw do
     post 'reset', to: 'admins#send_reset_mail', as: 'send_reset_mail'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'signin' => 'sessions#new'
+  post 'signin' => 'sessions#create'
+  delete 'signout' => 'sessions#destroy'
+  get 'signup' => 'users#new'
+  post 'signup' => 'users#create'
+  
+  resources :users, except: [:new]
 end
