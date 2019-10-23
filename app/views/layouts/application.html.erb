@@ -10,6 +10,20 @@
   </head>
 
   <body>
-    <%= yield %>
+    <section class="content">
+      <% flash.each do |key, value| %>
+        <div class="row">
+          <div class="alert alert-<%= key %>">
+            <%= value %>
+          </div>
+        </div>
+      <% end %>
+    </section>
+    <div class="container">
+      <div class="row justify-content-md-center" style="margin-top: 40px">
+        
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
