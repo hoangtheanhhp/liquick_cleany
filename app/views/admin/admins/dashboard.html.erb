@@ -1,0 +1,8 @@
+<% if current_admin %>
+<h1>Đây là trang admin, hay thay thế nó bằng trang xịn</h1>
+  Logged in as <%= current_admin.email %>.
+  <%= link_to "Log Out", admin_logout_path %>
+<% end %>
+<p id="notice"><%= notice %></p>
+<h1>Example</h1>
+<p>Lorem ipsum …</p>
