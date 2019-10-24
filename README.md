@@ -1,24 +1,18 @@
-# README
+# Liquick_cleany
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Website to preduce `Housekeeping` service when you're away from home.
 
-Things you may want to cover:
+## Enviroment:
 
-* Ruby version
+* Ruby version: `2.6.3`
 
-* System dependencies
+## Run introduction
+* install required gem: `bundle install`
+* create database: `rails db:migrate --seed`
+* start server:  `rails s`
+* Open web: `localhost:3000`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Routes
+* Home page: `localhost:3000/`
+* User: `localhost:3000/signin`
+* Admin: `localhost:3000/admin/login`
