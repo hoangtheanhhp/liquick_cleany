@@ -1,4 +1,6 @@
-<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% content_for :for_head do %>
+  <%= stylesheet_link_tag    'admin/login', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 <title>Reset password</title>
 <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
