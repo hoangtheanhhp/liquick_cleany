@@ -1,6 +1,10 @@
 class Admin::SessionsController < ApplicationController
   skip_before_action :require_login
+  helper_method :current_admin
   def new
+    if session[:admin_id]
+      redirect_to admin_dashboard_path
+    end
   end
   def create
     admin = Admin::Admin.find_by_email(params[:email])
