@@ -23,7 +23,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'bcrypt', '~> 3.1', '>= 3.1.13'
-  gem 'bootstrap', '~> 4.1.3'
+  gem 'bootstrap', '>=4.3.0'
   gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 end
 
