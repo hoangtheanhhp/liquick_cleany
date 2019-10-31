@@ -2,6 +2,9 @@ class Admin::AdminsController < ApplicationController
   before_action :set_admin_admin, :admin_authenticated, only: [:show, :edit, :update, :destroy]
   helper_method :current_admin
   skip_before_action :require_login
+
+  layout 'admin/admins/layouts/application'
+
   # GET /admin/admins
   # GET /admin/admins.json
   # def index
