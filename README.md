@@ -15,7 +15,7 @@ Website to preduce `Housekeeping` service when you're away from home.
     + `export GMAIL_USERNAME="xxx@gmail.com"` 
     + `export GMAIL_PASSWORD="xxxxxx"`
   - save config file
-* create database: `rails db:migrate --seed`
+* create database: `rake db:drop db:create db:migrate db:seed`
 * start server:  `rails s`
 * Open web: `localhost:3000`
 
