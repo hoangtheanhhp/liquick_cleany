@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root "homes#index"
+
   namespace :admin do
     # get 'sessions/new'
     # get 'sessions/create'
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
     get 'resetpass', to: 'admins#resetpass', as: 'resetpass'
     post 'reset', to: 'admins#send_reset_mail', as: 'send_reset_mail'
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   get 'signin' => 'sessions#new'
   post 'signin' => 'sessions#create'
   delete 'signout' => 'sessions#destroy'
@@ -19,4 +21,6 @@ Rails.application.routes.draw do
   post 'signup' => 'users#create'
   
   resources :users, except: [:new]
+  resources :account_activations, only: [:edit]
+  resources :password_resets, only: [:new, :create, :edit, :update]
 end

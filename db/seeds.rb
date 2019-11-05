@@ -5,4 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-    admins = Admin::Admin.create([{ email: 'hoangtheanhhp@gmail.com' }, { password_digest: BCrypt::Password.create('123456') }])
+Admin::Admin.create!(email: 'hoangtheanhhp@gmail.com', 
+                     password_digest: BCrypt::Password.create('123456'))
+User.create!(name: "yue",
+             email: "yue@yopmail.com",
+             password: "yue@2412",
+             password_confirmation: "yue@2412",
+             phone: "0909999999",
+             address: "Hanoi, Vietnam",
+             activated: true,
+             activated_at: Time.zone.now)
