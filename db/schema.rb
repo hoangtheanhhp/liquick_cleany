@@ -13,8 +13,11 @@
 ActiveRecord::Schema.define(version: 2019_10_23_134014) do
 
   create_table "admin_admins", force: :cascade do |t|
+    t.string "name", default: "Cleany Admin"
     t.string "email"
     t.string "password_digest"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_admins_on_email", unique: true

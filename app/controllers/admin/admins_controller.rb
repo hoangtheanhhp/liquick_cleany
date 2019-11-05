@@ -32,12 +32,19 @@ class Admin::AdminsController < ApplicationController
 
   # GET /admin/resetpass
   def resetpass
+    render :resetpass, layout: 'application'
   end
 
   # POST
 
   def send_reset_mail
-    return render html: '<div>A reset password mail is sent. Please check your email inbox</div>'.html_safe
+    admin = Admin::Admin.find_by_email(params[:email])
+    if admin
+      admin.send_password_reset_email
+      return render html: '<div>A reset password mail is sent. Please check your email inbox</div>'.html_safe
+    end
+    result = '<div>Email:' + params[:email] + ' not found</div>'
+    return render html: result.html_safe
   end
 
   # POST /admin/admins
