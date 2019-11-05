@@ -58,6 +58,19 @@
                                   <!-- <a class="dropdown-item" href="<%= signout_path %>">Logout</a> -->
                                 </div>
                             </div>
+                        <% elsif partner_logged_in? %>
+                            <div class="dropdown">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-reddit-alien" aria-hidden="true"></i> <%= current_partner.name %>
+                                </a>
+                              
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                  <a class="dropdown-item" href="<%= partner_path(current_partner.id) %>">User Profile</a>
+                                  <a class="dropdown-item" href="#">Change Password </a>
+                                  <%= link_to "Logout", partner_signout_path, method: :delete, class: "dropdown-item" %>
+                                  <!-- <a class="dropdown-item" href="<%= signout_path %>">Logout</a> -->
+                                </div>
+                            </div>    
                         <% else %>
                             <a href="<%= signin_path %>" class="login-btn">Login</a>
                         <% end %>
