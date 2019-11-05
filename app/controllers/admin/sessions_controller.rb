@@ -1,5 +1,5 @@
 class Admin::SessionsController < ApplicationController
-  skip_before_action :require_login
+  # skip_before_action :require_login
   helper_method :current_admin
   def new
     if session[:admin_id]

@@ -1,25 +1,28 @@
 class SessionsController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create]
-
   def new
     redirect_to '/' if logged_in?
   end
 
   def create
-  	user = User.find_by email: params[:session][:email].downcase
-    if user && user.authenticate(params[:session][:password])
-      flash[:success] = "Login success"
-      log_in user
-      redirect_to user
+    user = User.find_by email: params[:session][:email].downcase
+    if user&.authenticate(params[:session][:password])
+      if user.activated?
+        log_in user
+        params[:session][:remember_me] == "1" ? remember(user) : forget(user)
+        redirect_back_or user
+      else
+        flash[:warning] = "Please active your account first!"
+        redirect_to root_path
+      end
     else
-      flash[:danger] = "Invalid email/password combination"
+      flash.now[:danger] = "Login error!"
       render :new
     end
   end
 
   def destroy
-    log_out
+    log_out if logged_in?
     flash[:success] = "You are logged out"
-    redirect_to signin_path
+    redirect_to root_path
   end
 end

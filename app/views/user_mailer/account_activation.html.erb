@@ -1,0 +1,6 @@
+<h1>Activation Mail</h1>
+<p><%= 'hi ' + @user.name %></p>
+Click 
+<%= link_to "active link", edit_account_activation_url(id: @user.activation_token,
+                                                    email: @user.email) %>
+ to active your account
