@@ -5,15 +5,30 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Admin::Admin.create!(email: 'hoangtheanhhp@gmail.com', 
+Admin::Admin.create(email: 'hoangtheanhhp@gmail.com', 
                      password_digest: BCrypt::Password.create('123456'))
-Admin::Admin.create!(email: 'anhlahau.hl@gmail.com', 
-                     password_digest: BCrypt::Password.create('123456'))                     
-User.create!(name: "yue",
-             email: "yue@yopmail.com",
-             password: "yue@2412",
-             password_confirmation: "yue@2412",
-             phone: "0909999999",
+
+i = 0
+@password = '123456'
+until i > 10 #Until we've gone over 5
+	User.create!(name: "liquick#{i}",
+             email: "anhlahau.hl+#{i}@gmail.com",
+             password: @password,
+             password_confirmation: @password,
+             phone: "090999999#{i}",
              address: "Hanoi, Vietnam",
              activated: true,
              activated_at: Time.zone.now)
+             
+	Partner.create!(name: "liquick_partner#{i}",
+         email: "anhlahau.hl+#{i+11}@gmail.com",
+         password: @password,
+         password_confirmation: @password,
+         phone: "090999999#{i+10}",
+         address: "HoChiMinh, Vietnam",
+         activated: true,
+         activated_at: Time.zone.now,
+         worktime: '8h',
+         cost: 100*i)
+    i = i+1
+end #End the loop
