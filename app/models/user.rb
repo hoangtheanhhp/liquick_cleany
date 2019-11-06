@@ -3,8 +3,10 @@ class User < ApplicationRecord
   before_save :downcase_email
   before_create :create_activation_digest
 
+  mount_uploader :avatar, ImageUploader
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  USER_ATTRIBUTE = [:name, :email, :phone, :address, :password, :password_confirmation].freeze
+  USER_ATTRIBUTE = [:name, :email, :avatar, :phone, :address, :password, :password_confirmation].freeze
   
   validates :name, presence: true, length: {maximum: 20}
   validates :email, presence: true, length: {maximum: 50},
@@ -52,7 +54,7 @@ class User < ApplicationRecord
   end
 
   def password_reset_expired?
-    reset_sent_at < Settings.hour_expired.hours.ago
+    reset_sent_at < 2.hours.ago
   end
 
   class << self

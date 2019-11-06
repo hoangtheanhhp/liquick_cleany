@@ -39,3 +39,4 @@ Rails.application.configure do
       password: ENV["GMAIL_PASSWORD"]
   }
 end
+require 'carrierwave/orm/activerecord'
