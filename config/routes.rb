@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get '', to: 'admins#dashboard', as: 'dashboard'
     get 'resetpass', to: 'admins#resetpass', as: 'resetpass'
     post 'reset', to: 'admins#send_reset_mail', as: 'send_reset_mail'
+    get 'newpassword' => 'reset_password#edit', as: 'new_password'
   end
 
   get 'signin' => 'sessions#new'

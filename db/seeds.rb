@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Admin::Admin.create!(email: 'hoangtheanhhp@gmail.com', 
                      password_digest: BCrypt::Password.create('123456'))
+Admin::Admin.create!(email: 'anhlahau.hl@gmail.com', 
+                     password_digest: BCrypt::Password.create('123456'))                     
 User.create!(name: "yue",
              email: "yue@yopmail.com",
              password: "yue@2412",
