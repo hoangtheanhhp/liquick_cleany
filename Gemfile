@@ -25,6 +25,8 @@ group :development do
   gem 'bcrypt', '~> 3.1', '>= 3.1.13'
   gem 'bootstrap', '>=4.3.0'
   gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
+  gem 'carrierwave', '~> 2.0', '>= 2.0.2'
+  gem 'mini_magick', '~> 4.9', '>= 4.9.5'
 end
 
 group :test do
