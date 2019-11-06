@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  
+  get 'partner/login' => 'partner_sessions#new', as: 'partner_login'
+  post 'partner/login' => 'partner_sessions#create'
+  delete 'partner/signout' => 'partner_sessions#destroy'
+  get 'partner/signup' => 'partners#new'
+  post 'partner/signup' => 'partners#create'
+  
+  resources :partners, except: [:new]
+
   root "homes#index"
 
   namespace :admin do
