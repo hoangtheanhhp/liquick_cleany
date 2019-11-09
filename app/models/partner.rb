@@ -3,8 +3,10 @@ class Partner < ApplicationRecord
   before_save :downcase_email
   before_create :create_activation_digest
 
+  mount_uploader :avatar, ImageUploader
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  PARTNER_ATTRIBUTE = [:name, :email, :phone, :address, :password, :password_confirmation, :worktime, :cost].freeze
+  PARTNER_ATTRIBUTE = [:name, :email, :avatar, :phone, :address, :password, :password_confirmation, :worktime_start, :worktime_end].freeze
   
   validates :name, presence: true, length: {maximum: 20}
   validates :email, presence: true, length: {maximum: 50},

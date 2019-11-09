@@ -40,7 +40,7 @@ module PartnerSessionsHelper
       elsif partner_id = cookies.signed[:partner_id]
         user = Partner.find_by id: partner_id
         if user&.authenticated?(:partner_remember, cookies[:partner_remember_token])
-          log_in user
+          partner_log_in user
           @current_user = user
         end
       end

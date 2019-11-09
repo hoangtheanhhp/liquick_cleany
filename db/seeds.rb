@@ -28,7 +28,6 @@ until i > 10 #Until we've gone over 5
          address: "HoChiMinh, Vietnam",
          activated: true,
          activated_at: Time.zone.now,
-         worktime: '8h',
          cost: 100*i)
     i = i+1
 end #End the loop
