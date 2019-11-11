@@ -66,7 +66,7 @@
                               
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                   <a class="dropdown-item" href="<%= partner_path(current_partner.id) %>">User Profile</a>
-                                  <a class="dropdown-item" href="#">Change Password </a>
+                                  <a class="dropdown-item" href="<%= edit_partner_change_password_path(current_partner.id) %>">Change Password </a>
                                   <%= link_to "Logout", partner_signout_path, method: :delete, class: "dropdown-item" %>
                                   <!-- <a class="dropdown-item" href="<%= signout_path %>">Logout</a> -->
                                 </div>
@@ -89,7 +89,7 @@
                 <nav class="classy-navbar justify-content-between" id="vizewNav">
 
                     <!-- Nav brand -->
-                    <a href="index.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
+                    <a href="index.html" class="nav-brand"><p style="color:white;font-size:-webkit-xxx-large">Cleany</p></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">

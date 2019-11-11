@@ -1,8 +1,8 @@
 class PartnersController < ApplicationController
   include PartnerSessionsHelper
-  before_action :logged_in_partner, only: [:index, :edit, :update]
+  before_action :logged_in_partner, only: [:show, :index, :edit, :update]
   before_action :load_user, only: [:show, :edit, :update, :correct_user]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:show, :edit, :update]
   def index
     @users = Partner.all  
   end
