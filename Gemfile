@@ -27,6 +27,8 @@ group :development do
   gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
   gem 'carrierwave', '~> 2.0', '>= 2.0.2'
   gem 'mini_magick', '~> 4.9', '>= 4.9.5'
+  gem 'kaminari', '~> 1.1', '>= 1.1.1'
+  gem 'faker', '~> 1.6', '>= 1.6.6'
 end
 
 group :test do

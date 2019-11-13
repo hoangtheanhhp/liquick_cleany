@@ -28,11 +28,13 @@ ActiveRecord::Schema.define(version: 2019_11_05_151224) do
     t.string "email"
     t.string "password_digest"
     t.string "phone"
-    t.string "address"
+    t.string "district"
+    t.string "city"
     t.string "avatar"
-    t.time "worktime_start"
-    t.time "worktime_end"
+    t.string "worktime_start"
+    t.string "worktime_end"
     t.integer "cost"
+    t.string "description"
     t.datetime "activated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

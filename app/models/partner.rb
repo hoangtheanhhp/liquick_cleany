@@ -6,7 +6,7 @@ class Partner < ApplicationRecord
   mount_uploader :avatar, ImageUploader
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  PARTNER_ATTRIBUTE = [:name, :email, :avatar, :phone, :address, :password, :password_confirmation, :worktime_start, :worktime_end].freeze
+  PARTNER_ATTRIBUTE = [:name, :email, :avatar, :phone, :cost, :description, :city, :district, :password, :password_confirmation, :worktime_start, :worktime_end].freeze
   
   validates :name, presence: true, length: {maximum: 20}
   validates :email, presence: true, length: {maximum: 50},

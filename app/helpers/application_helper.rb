@@ -3,4 +3,14 @@ module ApplicationHelper
     base_title = "LiquickCleany"
     page_title.empty? ? base_title : page_title + " | " + base_title
   end
+
+  def address_decode city_code, district_code
+    districts = JSON.parse(File.read(Rails.root.join('db/quan-huyen/' + city_code + '.json')))
+    districts.each do |district|
+      if district[0].to_i == district_code.to_i
+        return district[1]['path']
+      end  
+    end
+    return "#no_address"
+  end
 end
