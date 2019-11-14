@@ -5,11 +5,13 @@ class CreatePartners < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :password_digest
       t.string :phone
-      t.string :address
+      t.string :district
+      t.string :city
       t.string :avatar, null: true
-      t.time :worktime_start
-      t.time :worktime_end
+      t.string :worktime_start
+      t.string :worktime_end
       t.integer :cost
+      t.string :description
       t.datetime :activated_at
       t.timestamps
     end

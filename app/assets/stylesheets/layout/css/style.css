@@ -16,8 +16,8 @@
 body {
   font-family: "Roboto", sans-serif;
   font-size: 14px;
-  background-color: #222627;
-  color: #a6a6a6; }
+  /* background-color: #222627; */
+  /* color: #a6a6a6; */ }
 
 h1,
 h2,
@@ -26,7 +26,7 @@ h4,
 h5,
 h6 {
   font-family: "Roboto", sans-serif;
-  color: #ffffff;
+  color: #000000;
   line-height: 1.3;
   font-weight: 500; }
 
@@ -495,6 +495,7 @@ input:focus {
 .header-area {
   position: relative;
   z-index: 1000;
+  background-color: #222627;
   width: 100%; }
   .header-area .vizew-main-menu {
     position: relative;
@@ -643,7 +644,7 @@ input:focus {
     background-color: transparent;
     border-radius: 0; }
     .vizew-breadcrumb .breadcrumb .breadcrumb-item {
-      color: #a6a6a6;
+      color: #000;
       font-size: 16px;
       font-weight: 400; }
       @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -656,7 +657,7 @@ input:focus {
         .vizew-breadcrumb .breadcrumb .breadcrumb-item {
           font-size: 12px; } }
       .vizew-breadcrumb .breadcrumb .breadcrumb-item a {
-        color: #fff;
+        color: #000;
         font-size: 16px;
         font-weight: 400; }
         @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -674,7 +675,7 @@ input:focus {
   .vizew-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
     content: "\f105";
     font-family: "FontAwesome";
-    color: #fff; }
+    /* color: #fff; */ }
 
 .single-blog-post {
   position: relative;
@@ -718,7 +719,7 @@ input:focus {
     z-index: 1;
     padding-left: 20px; }
     .single-blog-post .post-content .post-title {
-      color: #ffffff;
+      color: #000;
       margin-bottom: 5px;
       display: block;
       font-size: 16px;
@@ -808,7 +809,7 @@ input:focus {
           max-width: 100px;
           width: 100px; } }
     .single-blog-post.style-3 .post-content .post-title {
-      color: #ffffff;
+      color: #000000;
       margin-bottom: 15px;
       display: block;
       font-weight: 700;
@@ -966,7 +967,7 @@ input:focus {
       padding: 6px 10px;
       border-radius: 2px;
       font-size: 14px;
-      color: #ffffff;
+      color: #000000;
       line-height: 1;
       z-index: 79; }
   .single-post-area .post-content {
@@ -975,7 +976,7 @@ input:focus {
     margin-top: 20px; }
     .single-post-area .post-content .post-title {
       display: block;
-      color: #ffffff;
+      color: #000000;
       margin-bottom: 15px;
       font-size: 20px; }
       @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -1910,19 +1911,19 @@ input:focus {
   z-index: 2;
   height: 48px;
   width: 100%;
-  background-color: #393c3d;
+  /* background-color: #393c3d; */
   font-size: 12px;
   margin-bottom: 15px;
   padding: 10px 30px;
-  color: #ffffff !important;
+  /* color: #ffffff !important; */
   -webkit-transition-duration: 500ms;
   -o-transition-duration: 500ms;
   transition-duration: 500ms;
-  border: none;
+  /* border: none; */
   border-radius: 0; }
   .form-control:focus {
     box-shadow: none;
-    background-color: #393c3d; }
+    /* background-color: #393c3d;  */}
 
 select.form-control {
   -webkit-appearance: none;

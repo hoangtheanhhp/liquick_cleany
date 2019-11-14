@@ -8,9 +8,9 @@
 Admin::Admin.create(email: 'hoangtheanhhp@gmail.com', 
                      password_digest: BCrypt::Password.create('123456'))
 
-i = 0
+i = 1
 @password = '123456'
-until i > 10 #Until we've gone over 5
+until i > 8 #Until we've gone over 5
 	User.create!(name: "liquick#{i}",
              email: "anhlahau.hl+#{i}@gmail.com",
              password: @password,
@@ -25,9 +25,13 @@ until i > 10 #Until we've gone over 5
          password: @password,
          password_confirmation: @password,
          phone: "090999999#{i+10}",
-         address: "HoChiMinh, Vietnam",
+         district: i + 1,
+         city: "01",
+         worktime_start: 5 + i,
+         worktime_end: 8 + i,
          activated: true,
          activated_at: Time.zone.now,
-         cost: 100*i)
+         description: Faker::Lorem.paragraph,
+         cost: 500*i)
     i = i+1
 end #End the loop

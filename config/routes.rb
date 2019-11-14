@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   delete 'signout' => 'sessions#destroy'
   get 'signup' => 'users#new'
   post 'signup' => 'users#create'
+
+  get 'get_district' => 'homes#get_district'
+  get 'staff_search' => 'partners#search', as: 'staff_search'
   
   resources :users, except: [:new]
   resources :account_activations, only: [:edit]
