@@ -13,12 +13,13 @@ class Admin::AdminsController < ApplicationController
 
   # GET /admin/admins/1
   # GET /admin/admins/1.json
-  # def show
-  # end
+  def show
+  end
 
   # GET /admin/dashboard
   def dashboard
     admin_authenticated
+    @users = User.all
   end
   # GET /admin/admins/new
   # def new
