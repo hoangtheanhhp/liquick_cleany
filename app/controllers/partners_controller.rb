@@ -3,6 +3,7 @@ class PartnersController < ApplicationController
   before_action :logged_in_partner, only: [:show, :index, :edit, :update]
   before_action :load_user, only: [:show, :edit, :update, :correct_user]
   before_action :correct_user, only: [:show, :edit, :update]
+  before_action :load_cities
   def index
     @users = Partner.all  
   end
@@ -15,7 +16,8 @@ class PartnersController < ApplicationController
 
   def create
     @user = Partner.new user_params
-    if @user.save
+    @cities = JSON.parse(File.read(Rails.root.join('db/tinh_tp.json')))
+    if valid_partner and @user.save
       @user.send_activation_email
       flash[:success] = "Check mail to active your account!"
       redirect_to partner_login_path
@@ -25,16 +27,18 @@ class PartnersController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+  end
 
   def edit; end
 
   def update
-    if @user.update_attributes user_params
+    if valid_partner and @user.update_attributes user_params
       flash[:success] = "Update Successfully!"
       redirect_to @user
     else
-      render :edit
+      flash[:fails] = "Update Failed!"
+      redirect_to @user
     end
   end
 
@@ -91,6 +95,9 @@ class PartnersController < ApplicationController
 
   private
 
+  def load_cities
+    @cities = JSON.parse(File.read(Rails.root.join('db/tinh_tp.json')))
+  end
   def correct_user
     redirect_to root_path unless @user&.current_partner? current_partner
   end
@@ -105,5 +112,9 @@ class PartnersController < ApplicationController
     return @user if @user
     flash[:danger] = "Partner not found!"
     redirect_to root_path
+  end
+
+  def valid_partner
+    return params[:partner][:worktime_start].to_i < params[:partner][:worktime_end].to_i
   end
 end

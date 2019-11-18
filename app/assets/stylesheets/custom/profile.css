@@ -44,3 +44,7 @@
 .video-duration {
   color: #fff !important;
 }
+
+.vertical-sub {
+  vertical-align: sub;
+}
