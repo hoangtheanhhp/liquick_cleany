@@ -106,20 +106,26 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <div class="col-sm-5 price-filter-cover">
+                                        <div class="col-sm-2 price-filter-cover">
+                                             <span class="vertical-sub">Price: </span>
+                                        </div>
+                                        <div class="col-sm-4 price-filter-cover">
                                             <label class="sr-only" for="search-minprice">Price from</label>
                                             <select value="<%= @minprice %>" id="search-minprice" name="minprice" data-placeholder="Price from" class="chosen-select price-from-filter">
-                                                <option value="default">Price from</option>
+                                                <%# <option value="default">Price from</option> %>
                                                 <option value="0" <%= 'selected' if @minprice=='0' %>>0</option>
                                                 <option value="1000000" <%= 'selected' if @minprice=='1000000' %>>1.000.000</option>
                                                 <option value="2000000" <%= 'selected' if @minprice=='2000000' %>>2.000.000</option>
                                                 <option value="5000000" <%= 'selected' if @minprice=='5000000' %>>5.000.000</option>
                                             </select>
                                         </div>
-                                        <div class="col-sm-5 price-filter-cover">
+                                        <div class="col-sm-1 price-filter-cover">
+                                             <span class="vertical-sub">~</span>
+                                        </div>
+                                        <div class="col-sm-4 price-filter-cover">
                                             <label class="sr-only" for="search-maxprice">to</label>
                                             <select id="search-maxprice" name="maxprice" data-placeholder="to" class="chosen-select price-from-filter">
-                                                <option selected="selected" value="default">to</option>
+                                                <%# <option selected="selected" value="default">to</option> %>
                                                 <option value="1000000" <%= 'selected' if @maxprice=='1000000' %>>1.000.000</option>
                                                 <option value="2000000" <%= 'selected' if @maxprice=='2000000' %>>2.000.000</option>
                                                 <option value="5000000" <%= 'selected' if @maxprice=='5000000' %>>5.000.000</option>
@@ -147,20 +153,26 @@
                                     </div> -->
 
                                     <div class="form-group row">
-                                        <div class="col-sm-5 price-filter-cover">
-                                            <label class="sr-only" for="search-minprice">Time from</label>
-                                            <select id="search-minprice" name="mintime" data-placeholder="Time from" class="chosen-select price-from-filter">
-                                                <option selected="selected" value="default">Time from</option>
-                                                <% (5..23).each do |i| %>
+                                        <div class="col-sm-2 price-filter-cover">
+                                             <span class="vertical-sub">Time: </span>
+                                        </div>
+                                        <div class="col-sm-4 price-filter-cover">
+                                            <label class="sr-only" for="search-mintime">Time from</label>
+                                            <select id="search-mintime" name="mintime" data-placeholder="Time from" class="chosen-select price-from-filter">
+                                                <%# <option selected="selected" value="default">Time from</option> %>
+                                                <% (6..20).each do |i| %>
                                                     <option value="<%= i %>" <%= 'selected' if @mintime==i.to_s %>><%= i %></option>
                                                 <% end %>
                                             </select>
                                         </div>
-                                        <div class="col-sm-5 price-filter-cover">
-                                            <label class="sr-only" for="search-maxprice">to</label>
-                                            <select id="search-maxprice" name="maxtime" data-placeholder="to" class="chosen-select price-from-filter">
-                                                <option selected="selected" value="default">to</option>
-                                                <% (6..24).each do |i| %>
+                                        <div class="col-sm-1 price-filter-cover">
+                                             <span class="vertical-sub">~</span>
+                                        </div>
+                                        <div class="col-sm-4 price-filter-cover">
+                                            <label class="sr-only" for="search-maxtime">to</label>
+                                            <select id="search-maxtime" name="maxtime" data-placeholder="to" class="chosen-select price-from-filter">
+                                                <%# <option selected="selected" value="default">to</option> %>
+                                                <% (7..21).each do |i| %>
                                                     <option value="<%= i %>" <%= 'selected' if @maxtime==i.to_s %>><%= i %></option>
                                                 <% end %>
                                             </select>
@@ -197,7 +209,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-block btn-primary">Tìm kiếm</button>
+                                                <button type="submit" class="btn btn-block btn-primary">Search</button>
                                             </div>
                                         </div>
                                     </div>
@@ -269,6 +281,21 @@
 
 <% content_for :for_js do %>
     <script>
+        function limit_time(){
+          var end_times = $('#search-maxtime')[0].options
+          if (parseInt($('#search-maxtime').val()) <= parseInt($('#search-mintime').val())){
+              $('#search-maxtime').val(parseInt($('#search-mintime').val()) + 1)
+          }
+          for (var i = 0; i < end_times.length; i++){
+            if (parseInt(end_times[i].value) <= parseInt($('#search-mintime').val())){
+              $(end_times[i]).css('display', 'none')
+            }else{
+              $(end_times[i]).css('display', 'block')
+            }
+          }
+        }
+        limit_time()
+        $('#search-mintime').change(limit_time)
         $('#city').change(function() {
             if($(this).val() != 'default') {
                 var city_code = $(this).val();

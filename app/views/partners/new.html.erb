@@ -64,9 +64,10 @@
 
                         <div class="form-group">
                           <span class="form-control" >Worktime</span>
-                          <%= f.number_field :worktime_start, class: "form-control col-12 col-md-5",  style:"display:inline", min:"9:00", max:"18:00", required:"required" %>
-                          <span style="display:inline">to</span>
-                          <%= f.number_field :worktime_end, class: "form-control col-12 col-md-5",  style:"display:inline", min:"9:00", max:"18:00", required:"required" %>
+                          <%= f.select :worktime_start, options_for_select(6..20), {} , {:class => "form-control col-12 col-md-5", :style=>"display:inline"} %>
+                          <span>~</span>
+                          <%= f.select :worktime_end, options_for_select(7..21), {} , {:class => "form-control col-12 col-md-5", :style=>"display:inline"} %>
+                          <span> H</span>
                         </div>
 
                         <div class="form-group">
@@ -90,6 +91,21 @@
 
 <% content_for :for_js do %>
     <script>
+        function limit_time(){
+          var end_times = $('#partner_worktime_end')[0].options
+          if (parseInt($('#partner_worktime_end').val()) <= parseInt($('#partner_worktime_start').val())){
+              $('#partner_worktime_end').val(parseInt($('#partner_worktime_start').val()) + 1)
+          }
+          for (var i = 0; i < end_times.length; i++){
+            if (parseInt(end_times[i].value) <= parseInt($('#partner_worktime_start').val())){
+              $(end_times[i]).css('display', 'none')
+            }else{
+              $(end_times[i]).css('display', 'block')
+            }
+          }
+        }
+        limit_time()
+        $('#partner_worktime_start').change(limit_time)
         $('#city').change(function() {
             if($(this).val() != 'default') {
                 var city_code = $(this).val();
