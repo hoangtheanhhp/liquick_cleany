@@ -29,6 +29,7 @@ group :development do
   gem 'mini_magick', '~> 4.9', '>= 4.9.5'
   gem 'kaminari', '~> 1.1', '>= 1.1.1'
   gem 'faker', '~> 1.6', '>= 1.6.6'
+  gem 'toastr-rails', '~> 1.0', '>= 1.0.3'
 end
 
 group :test do

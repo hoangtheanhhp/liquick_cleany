@@ -13,12 +13,38 @@ class Admin::AdminsController < ApplicationController
 
   # GET /admin/admins/1
   # GET /admin/admins/1.json
-  # def show
-  # end
+  def show
+  end
+
+  def destroy_user
+    admin_authenticated
+    user = User.find_by id: params[:user_id]
+    if user.destroy
+      render json: { data: "delete success" }
+    else
+      render json: { data: "can not delete" }
+    end
+  end
+
+  def destroy_partner
+    admin_authenticated
+    partner = Partner.find_by id: params[:partner_id]
+    if partner.destroy
+      render json: { data: "delete success" }
+    else
+      render json: { data: "can not delete" }
+    end
+  end
+
+  def show_partners
+    admin_authenticated
+    @partners = Partner.all
+  end
 
   # GET /admin/dashboard
   def dashboard
     admin_authenticated
+    @users = User.all
   end
   # GET /admin/admins/new
   # def new
