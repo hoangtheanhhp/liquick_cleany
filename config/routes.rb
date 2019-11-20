@@ -38,4 +38,6 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :partner_password_resets, only: [:new, :create, :edit, :update]
   resources :partner_change_password
+
+  get 'users_delete' => 'users#destroy'
 end

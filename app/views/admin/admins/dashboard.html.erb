@@ -1,8 +1,46 @@
-<% if current_admin %>
-<h1>Đây là trang admin, hay thay thế nó bằng trang xịn</h1>
-  Logged in as <%= current_admin.email %>.
-  <%= link_to "Log Out", admin_logout_path %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+        
+            <tr id="user<%= user.id %>">
+                
+                    
+                    <td><%= user.name %></td>
+                    <td><%= user.email%></td>
+                    <td><%= user.phone%></td>
+                    <td>    
+                        <button onClick="deleteUser(this)" data-user-id="<%= user.id %>" type="submit" class="btn btn-primary">
+                            Delete
+                        </button></td>
+                
+            </tr>
+        
+    <% end %>
+  </tbody>
+</table>
+
+<% content_for :for_js do %>
+  <script>
+    function deleteUser(del_btn) {
+        var uid = del_btn.getAttribute("data-user-id");
+        $.ajax({
+                url: '/users_delete',
+                type: 'GET',
+                data: {
+                    user_id: uid
+                }
+            }).done(function(result) {
+               $("#user"+uid).remove();
+                alert(result.data);
+            });
+    }
+  </script>
 <% end %>
-<p id="notice"><%= notice %></p>
-<h1>Example</h1>
-<p>Lorem ipsum …</p>
