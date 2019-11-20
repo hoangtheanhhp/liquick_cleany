@@ -36,15 +36,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    @user = User.find_by id: params[:user_id]
-    if @user.destroy
-      render json: { data: "delete success" }
-    else
-      render json: { data: "can not delete" }
-    end
-  end
-
   private
 
   def correct_user

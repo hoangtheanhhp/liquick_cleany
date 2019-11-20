@@ -8,16 +8,16 @@
     </tr>
   </thead>
   <tbody>
-    <% @users.each do |user| %>
+    <% @partners.each do |partner| %>
         
-            <tr id="user<%= user.id %>">
+            <tr id="partner<%= partner.id %>">
                 
                     
-                    <td><%= user.name %></td>
-                    <td><%= user.email%></td>
-                    <td><%= user.phone%></td>
+                    <td><%= partner.name %></td>
+                    <td><%= partner.email%></td>
+                    <td><%= partner.phone%></td>
                     <td>    
-                        <button onClick="deleteUser(this)" data-user-id="<%= user.id %>" type="submit" class="btn btn-primary">
+                        <button onClick="deletePartner(this)" data-partner-id="<%= partner.id %>" type="submit" class="btn btn-primary">
                             Delete
                         </button></td>
                 
@@ -29,10 +29,10 @@
 
 <% content_for :for_js do %>
   <script>
-    function deleteUser(del_btn) {
-      var r =  confirm("Do you want to delete the user?");
+    function deletePartner(del_btn) {
+      var r =  confirm("Do you want to delete the partner?");
       if (r == true) {
-        var uid = del_btn.getAttribute("data-user-id");
+        var uid = del_btn.getAttribute("data-partner-id");
 
         var token = $( 'meta[name="csrf-token"]' ).attr( 'content' );
 
@@ -43,13 +43,13 @@
         });
 
         $.ajax({
-                url: '/admin/user_destroy',
+                url: '/admin/partner_destroy',
                 type: 'POST',
                 data: {
-                    user_id: uid
+                  partner_id: uid
                 }
             }).done(function(result) {
-               $("#user"+uid).remove();
+               $("#partner"+uid).remove();
                toastr.success(result.data);
             });
       } else {

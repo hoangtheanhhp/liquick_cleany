@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     get 'resetpass', to: 'admins#resetpass', as: 'resetpass'
     post 'reset', to: 'admins#send_reset_mail', as: 'send_reset_mail'
     get 'newpassword' => 'reset_password#edit', as: 'new_password'
+    post 'user_destroy' => 'admins#destroy_user', as: 'user_destroy'
+    get 'partners_list', to: 'admins#show_partners', as: 'partners_list'
+    post 'partner_destroy' => 'admins#destroy_partner', as: 'partner_destroy'
   end
 
   get 'signin' => 'sessions#new'
@@ -39,5 +42,5 @@ Rails.application.routes.draw do
   resources :partner_password_resets, only: [:new, :create, :edit, :update]
   resources :partner_change_password
 
-  get 'users_delete' => 'users#destroy'
+  
 end
