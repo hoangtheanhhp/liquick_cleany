@@ -10,7 +10,7 @@ class CreatePartners < ActiveRecord::Migration[5.2]
       t.string :avatar, null: true
       t.string :worktime_start
       t.string :worktime_end
-      t.integer :cost
+      t.integer :cost, default: 0
       t.string :description
       t.datetime :activated_at
       t.timestamps

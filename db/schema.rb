@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_11_05_151224) do
     t.string "avatar"
     t.string "worktime_start"
     t.string "worktime_end"
-    t.integer "cost"
+    t.integer "cost", default: 0
     t.string "description"
     t.datetime "activated_at"
     t.datetime "created_at", null: false
