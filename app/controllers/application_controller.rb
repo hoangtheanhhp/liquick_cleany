@@ -6,14 +6,14 @@ class ApplicationController < ActionController::Base
   def logged_in_user
     return if logged_in?
     store_location
-    flash[:danger] = "Please login first!"
+    flash[:error] = "Please login first!"
     redirect_to signin_url
   end
 
   def logged_in_partner
     return if partner_logged_in?
     store_location
-    flash[:danger] = "Please login first!"
+    flash[:error] = "Please login first!"
     redirect_to partner_login_url
   end
 end
