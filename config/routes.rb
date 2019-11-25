@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     post 'user_destroy' => 'admins#destroy_user', as: 'user_destroy'
     get 'partners_list', to: 'admins#show_partners', as: 'partners_list'
     post 'partner_destroy' => 'admins#destroy_partner', as: 'partner_destroy'
+    post 'salary_edit' => 'admins#edit_salary', as: 'salary_edit'
   end
 
   get 'signin' => 'sessions#new'

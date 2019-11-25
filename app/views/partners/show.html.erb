@@ -46,8 +46,8 @@
               <label for="address" class="col-sm-2 col-form-label">City</label>
               <div class="col-sm-10">
                   <label class="sr-only" for="search-city">city/province</label>
-                  <select class="chosen-select form-control" id="city" name="partner[city]" data-dependent="district" data-placeholder="-- Choose city/province --">
-                      <option selected="selected" value="default"><%= @cities[@user.city]['name'] %></option>
+                  <select class="chosen-select form-control" id="city" name="partner[city]" style="-webkit-appearance: menulist;" data-dependent="district" data-placeholder="-- Choose city/province --">
+                      <option selected="selected" value="<%= @user.city%>"><%= @cities[@user.city]['name'] %></option>
                       <% @cities.each do |city| %>
                           <option value="<%= city[0] %>"><%= city[1]['name'] %></option>
                       <% end %>
@@ -60,8 +60,8 @@
               <div class="col-sm-10">
                   <div class="form-group">
                       <label class="sr-only" for="district">district</label>
-                      <select class="chosen-select form-control" id="district" name="partner[district]" data-dependent="ward" data-placeholder="-- Choose district --">
-                          <option selected="selected" value="default"><%= address_decode(@user.city, @user.district).split(',')[0] %></option>
+                      <select class="chosen-select form-control" id="district" name="partner[district]" style="-webkit-appearance: menulist;" data-dependent="ward" data-placeholder="-- Choose district --">
+                          <option selected="selected" value="<%=@user.district%>"><%= address_decode(@user.city, @user.district).split(',')[0] %></option>
                       </select>
                   </div>
               </div>
@@ -71,9 +71,9 @@
             <label for="worktime" class="col-sm-2 col-form-label">Worktime</label>
             <div class="col-sm-10">
               <div class="form-group">
-                <%= f.select :worktime_start, options_for_select(6..20, @user.worktime_start), {} , {:class => "form-control col-12 col-md-5", :style=>"display:inline"} %>
+                <%= f.select :worktime_start, options_for_select(6..20, @user.worktime_start), {} , {:class => "form-control col-12 col-md-5", :style=>"display:inline;-webkit-appearance: menulist;"} %>
                 <span>~</span>
-                <%= f.select :worktime_end, options_for_select(7..21, @user.worktime_end), {} , {:class => "form-control col-12 col-md-5", :style=>"display:inline"} %>
+                <%= f.select :worktime_end, options_for_select(7..21, @user.worktime_end), {} , {:class => "form-control col-12 col-md-5", :style=>"display:inline;-webkit-appearance: menulist;"} %>
                 <span> H</span>
               </div>
             </div>

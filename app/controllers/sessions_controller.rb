@@ -9,13 +9,14 @@ class SessionsController < ApplicationController
       if user.activated?
         log_in user
         params[:session][:remember_me] == "1" ? remember(user) : forget(user)
+        flash[:success] = "Welcome to Cleany!"
         redirect_back_or user
       else
         flash[:warning] = "Please active your account first!"
         redirect_to root_path
       end
     else
-      flash.now[:danger] = "Login error!"
+      flash.now[:error] = "Login error!"
       render :new
     end
   end
