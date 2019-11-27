@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   
   resources :partners, except: [:new]
 
+  get 'partner/working' => 'partners#showWorking', as: 'partner_working'
+  get 'user/booking' => 'users#showBooking', as: 'user_booking'
+
   root "homes#index"
 
   namespace :admin do
@@ -36,6 +39,10 @@ Rails.application.routes.draw do
 
   get 'get_district' => 'homes#get_district'
   get 'staff_search' => 'partners#search', as: 'staff_search'
+  post 'booking' => 'books#handleBook'
+
+  post 'deleteBooking' => 'books#deleteBooking'
+  post 'acceptBooking' => 'books#acceptBooking'
   
   resources :users, except: [:new]
   resources :account_activations, only: [:edit]
