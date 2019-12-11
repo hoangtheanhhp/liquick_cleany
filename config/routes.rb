@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     get 'login', to: 'sessions#new', as: 'login'
     get 'logout', to: 'sessions#destroy', as: 'logout'
     get '', to: 'admins#dashboard', as: 'dashboard'
+    get 'dashboard', to: 'admins#dashboard'
+    get 'users_list', to: 'admins#show_users', as: 'users_list'
     get 'resetpass', to: 'admins#resetpass', as: 'resetpass'
     post 'reset', to: 'admins#send_reset_mail', as: 'send_reset_mail'
     get 'newpassword' => 'reset_password#edit', as: 'new_password'
