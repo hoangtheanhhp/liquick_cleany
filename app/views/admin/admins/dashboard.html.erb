@@ -63,7 +63,7 @@
                 <p>Total money</p>
               </div>
               <div class="icon">
-                <i class="ion ion-social-usd"></i>
+                ₫
               </div>
               <a href="#chart-label" class="small-box-footer">More info <i class="fas ion-forward"></i></a>
             </div>
@@ -143,27 +143,27 @@ function daysInMonth (month, year) {
 }
 var days = daysInMonth(12, 2019);
 for (var i = 0; i <= days / 7; i++){
-  var tr = document.createElement('tr'); 
-  for (var j = 0; j < 7; j++){
-      var day = 1 + (i*7+j) % days;
-      var today = new Date().getDate() == day ? "active" : '';
-      var newday = 1 + (i*7+j) > days ? "new":'';
-      tr.innerHTML += '<td data-action="selectDay" class="day '+newday + ' ' + today+'">'+day+'</td>';
-  }
-  $('#days-in-month').append(tr)
+    var tr = document.createElement('tr');
+    for (var j = 0; j < 7; j++) {
+        var day = 1 + (i * 7 + j) % days;
+        var today = new Date().getDate() == day ? "active" : '';
+        var newday = 1 + (i * 7 + j) > days ? "new" : '';
+        tr.innerHTML += '<td data-action="selectDay" class="day ' + newday + ' ' + today + '">' + day + '</td>';
+    }
+    $('#days-in-month').append(tr)
 }
 
-var month_data = JSON.parse(new DOMParser().parseFromString("<%=@money_month%>", 'text/html').body.textContent)
+var month_data = JSON.parse(new DOMParser().parseFromString("<%=@money_month%>", 'text/html').body.textContent);
 
 var presets = window.chartColors;
-		var utils = Samples.utils;
-		var inputs = {
-			min: -100,
-			max: 100,
-			count: 8,
-			decimals: 2,
-			continuity: 1
-		};
+var utils = Samples.utils;
+var inputs = {
+    min: -100,
+    max: 100,
+    count: 8,
+    decimals: 2,
+    continuity: 1
+};
 
 		var options = {
 			maintainAspectRatio: false,
