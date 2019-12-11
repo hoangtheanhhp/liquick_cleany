@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   
   resources :partners, except: [:new]
 
+  get 'partner/working' => 'partners#showWorking', as: 'partner_working'
+  get 'user/booking' => 'users#showBooking', as: 'user_booking'
+
   root "homes#index"
 
   namespace :admin do
@@ -25,6 +28,7 @@ Rails.application.routes.draw do
     post 'user_destroy' => 'admins#destroy_user', as: 'user_destroy'
     get 'partners_list', to: 'admins#show_partners', as: 'partners_list'
     post 'partner_destroy' => 'admins#destroy_partner', as: 'partner_destroy'
+    post 'salary_edit' => 'admins#edit_salary', as: 'salary_edit'
   end
 
   get 'signin' => 'sessions#new'
@@ -35,6 +39,10 @@ Rails.application.routes.draw do
 
   get 'get_district' => 'homes#get_district'
   get 'staff_search' => 'partners#search', as: 'staff_search'
+  post 'booking' => 'books#handleBook'
+
+  post 'deleteBooking' => 'books#deleteBooking'
+  post 'acceptBooking' => 'books#acceptBooking'
   
   resources :users, except: [:new]
   resources :account_activations, only: [:edit]

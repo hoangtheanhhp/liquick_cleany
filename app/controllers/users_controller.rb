@@ -6,6 +6,12 @@ class UsersController < ApplicationController
     @users = User.all  
   end
 
+  def showBooking
+    redirect_to '/' unless logged_in?
+    @working_logs = current_user.working_logs
+    render :booking_part
+  end
+
   def new
     redirect_to '/' if logged_in?
     @user = User.new
@@ -18,7 +24,7 @@ class UsersController < ApplicationController
       flash[:success] = "Check mail to active your account!"
       redirect_to signin_path
     else
-      flash[:danger] = "Register failed"
+      flash[:error] = "Register failed"
       render :new
     end
   end
@@ -50,7 +56,7 @@ class UsersController < ApplicationController
     @user = User.find_by id: params[:id]
 
     return @user if @user
-    flash[:danger] = "User not found!"
+    flash[:error] = "User not found!"
     redirect_to root_path
   end
 end
