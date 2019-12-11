@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update]
   before_action :load_user, only: [:show, :edit, :update, :correct_user]
   before_action :correct_user, only: [:show, :edit, :update]
+  skip_before_action :verify_authenticity_token, :only => [:createComment]
   def index
     @users = User.all  
   end
@@ -39,6 +40,21 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       render :edit
+    end
+  end
+
+  def createComment
+    user_id = params[:uid]
+    partner_id = params[:pid]
+    comment_content = params[:comment_content]
+
+    unless (user_id || partner_id)
+      flash[:error] = "Login Error"
+      redirect_to root_path
+    else
+      Comment.create(user_id: user_id,partner_id: partner_id, content: comment_content)
+      flash[:success] = "Comment Successfully!"
+      redirect_back fallback_location: root_path
     end
   end
 

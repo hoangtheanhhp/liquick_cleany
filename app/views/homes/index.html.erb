@@ -48,8 +48,9 @@
                                 <div class="single-post-area mb-50">
                                     <!-- Post Thumbnail -->
                                     <div class="post-thumbnail">
+                                        <a href="<%= partner_detail_path(partner.id) %>">
                                         <img style="border: 1px solid #363836; height: 233px" alt="<%= partner.description %>" title="<%= partner.description %>" src="<%= partner.avatar %>" onerror="this.src='img/bg-img/clean<%= index %>.jpg'">
-
+                                        </a>
                                         <!-- Video Duration -->
                                         <span class="video-duration"><%= number_to_currency(partner.cost*1000, precision: 0, unit: "" )+ " VND / H" %></span>
                                     </div>

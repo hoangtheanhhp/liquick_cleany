@@ -4,6 +4,14 @@ class HomesController < ApplicationController
     @partners = Partner.all
   end
 
+  def partner_detail
+    @partner = Partner.find_by id: params[:id]
+
+    return @partner if @partner
+    flash[:error] = "Partner not found!"
+    redirect_to root_path
+  end
+
   def get_district
     city_code = params['city_code']
     @districts = JSON.parse(File.read(Rails.root.join('db/quan-huyen/' + city_code + '.json')))

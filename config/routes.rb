@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   post 'signup' => 'users#create'
 
   get 'get_district' => 'homes#get_district'
+  get 'partner_detail/:id' => 'homes#partner_detail'
   get 'staff_search' => 'partners#search', as: 'staff_search'
   post 'booking' => 'books#handleBook'
 
@@ -52,5 +53,7 @@ Rails.application.routes.draw do
   resources :partner_password_resets, only: [:new, :create, :edit, :update]
   resources :partner_change_password
 
+  get '/partner_detail/:id', to: 'homes#partner_detail', as: 'partner_detail'
+  post 'createComment' => 'users#createComment', as: 'create_comment'
   
 end
