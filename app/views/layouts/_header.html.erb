@@ -9,7 +9,7 @@
 </div> -->
 
 <!-- ##### Header Area Start ##### -->
-<header class="header-area">
+<header class="header-area" style="background:#db4437">
     <!-- Top Header Area -->
     <div class="top-header-area">
         <div class="container">
@@ -21,22 +21,24 @@
                     <div class="top-meta-data d-flex align-items-center justify-content-end">
                         <!-- Top Social Info -->
                         <div class="top-social-info">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="#"><i style="color:white" class="fa fa-facebook"></i></a>
+                            <a href="#"><i style="color:white" class="fa fa-twitter"></i></a>
+                            <a href="#"><i style="color:white" class="fa fa-youtube-play"></i></a>
                         </div>
                         <!-- Top Search Area -->
+                        <!--
                         <div class="top-search-area">
                             <form action="index.html" method="post">
                                 <input type="search" name="top-search" id="topSearch" placeholder="Search...">
                                 <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
                             </form>
                         </div>
+                        -->
                         <!-- Login -->
                         <% if logged_in? %>
                             <div class="dropdown">
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-user" aria-hidden="true"></i><%= current_user.name %>
+                                <a class="btn btn-secondary dropdown-toggle" style="color:white" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-user" aria-hidden="true"></i> <%= current_user.name %>
                                 </a>
                               
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -48,7 +50,7 @@
                             </div>
                         <% elsif partner_logged_in? %>
                             <div class="dropdown">
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="btn btn-secondary dropdown-toggle" style="color:white" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-reddit-alien" aria-hidden="true"></i> <%= current_partner.name %>
                                 </a>
                               
@@ -95,21 +97,14 @@
                         <div class="classynav">
                             <ul>
                                 <li class="active"><a href="<%= root_path %>">Home</a></li>
-                                <li><a href="#">Archives</a></li>
-                                <li><a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="<%= root_path %>">- Home</a></li>
-                                        <li><a href="#">- Archive List</a></li>
-                                        <li><a href="#">- Archive Grid</a></li>
-                                        <li><a href="#">- Single Post</a></li>
-                                        <li><a href="#">- Single Video Post</a></li>
-                                        <li><a href="#">- Contact</a></li>
-                                        <li><a href="#">- Typography</a></li>
-                                        <li><a href="#">- Login</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Features</a>
-                                </li>
+                                <% if current_partner %>
+                                    <li><a href="<%= partner_working_path %>">Working Part</a></li>
+                                <% end %>
+                                <% if current_user %>
+                                    <li><a href="<%= user_booking_path %>">Booking Part</a></li>
+                                <% end %>
+                                <%# <li><a href="#">Archives</a></li>
+                                <li><a href="#">Features</a></li> %>
                                 <li><a href="#">Contact</a></li>
                             </ul>
                         </div>

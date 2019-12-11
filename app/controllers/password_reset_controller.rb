@@ -39,7 +39,7 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by email: params[:email]
 
     return @user if @user
-    flash[:danger] = "can not find user"
+    flash[:error] = "can not find user"
     redirect_to root_path
   end
 
@@ -52,7 +52,7 @@ class PasswordResetsController < ApplicationController
 
   def check_expiration
     return unless @user.password_reset_expired?
-    flash[:danger] = "time expired"
+    flash[:error] = "time expired"
     redirect_to new_password_reset_url
   end
 

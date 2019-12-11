@@ -30,22 +30,22 @@
 
                       <%= form_for @user do |f| %>
                         <div class="form-group">
-                          <%= f.text_field :name, placeholder: "Enter your username", class: "form-control" %>
+                          <%= f.text_field :name, placeholder: "* Enter your username", class: "form-control" %>
                         </div>
                         <div class="form-group">
-                          <%= f.text_field :email, placeholder: "Enter your email", class: "form-control" %>
+                          <%= f.text_field :email, placeholder: "* Enter your email", class: "form-control" %>
                         </div>
                         <div class="form-group">
-                          <%= f.password_field :password, placeholder: "Enter your password", class: "form-control" %>
+                          <%= f.password_field :password, placeholder: "* Enter your password", class: "form-control" %>
                         </div>
                         <div class="form-group">
-                          <%= f.password_field :password_confirmation, placeholder: "Confirm your Password", class: "form-control" %>
+                          <%= f.password_field :password_confirmation, placeholder: "* Confirm your Password", class: "form-control" %>
                         </div>
                         <div class="form-group">
-                          <%= f.number_field :phone, placeholder: "Enter your phone", class: "form-control" %>
+                          <%= f.number_field :phone, placeholder: "* Enter your phone", class: "form-control" %>
                         </div>
                         <div class="form-group">
-                          <select class="chosen-select form-control" id="city" name="partner[city]" data-dependent="district" data-placeholder="-- Choose city/province --">
+                          <select class="chosen-select form-control" id="city" name="partner[city]" data-dependent="district" style="-webkit-appearance: menulist;" data-placeholder="-- Choose city/province --">
                             <option selected="selected" value="default">-- Choose city/province --</option>
                             <% @cities.each do |city| %>
                               <option value="<%= city[0] %>"><%= city[1]['name'] %></option>
@@ -54,20 +54,20 @@
                         </div>
 
                         <div class="form-group">
-                            <select class="chosen-select form-control" id="district" name="partner[district]" data-dependent="ward" data-placeholder="-- Choose district --">
+                            <select class="chosen-select form-control" id="district" name="partner[district]" data-dependent="ward" style="-webkit-appearance: menulist;" data-placeholder="-- Choose district --">
                                 <option selected="selected" value="default">-- Choose district --</option>
                             </select>
                         </div>
                         <div class="form-group">
-                          <span class="form-control" >Worktime</span>
-                          <%= f.select :worktime_start, options_for_select(6..20), {} , {:class => "form-control col-12 col-md-5", :style=>"display:inline"} %>
+                          <span class="form-control" >* Worktime</span>
+                          <%= f.select :worktime_start, options_for_select(6..20), {} , {:class => "form-control col-12 col-md-5", :style=>"display:inline;-webkit-appearance: menulist;"} %>
                           <span>~</span>
-                          <%= f.select :worktime_end, options_for_select(7..21), {} , {:class => "form-control col-12 col-md-5", :style=>"display:inline"} %>
+                          <%= f.select :worktime_end, options_for_select(7..21), {} , {:class => "form-control col-12 col-md-5", :style=>"display:inline;-webkit-appearance: menulist;"} %>
                           <span> H</span>
                         </div>
 
                         <div class="form-group">
-                            <%= f.text_area :description, cols: 20, rows: 40, placeholder: "Enter your description", class: "form-control" %>
+                            <%= f.text_area :description, cols: 20, rows: 40, placeholder: "Enter your description\nShould enter your Genre of cleaning for User's searching, such as: Living room, Bathroom, Bedroom...", class: "form-control" %>
                         </div>
 
                         <%= f.submit "Register", class: "btn vizew-btn w-100 mt-30" %>

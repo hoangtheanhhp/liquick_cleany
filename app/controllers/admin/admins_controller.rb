@@ -20,7 +20,7 @@ class Admin::AdminsController < ApplicationController
     admin_authenticated
     user = User.find_by id: params[:user_id]
     if user.destroy
-      render json: { data: "delete success" }
+      render json: { data: "Delete User Successfully" }
     else
       render json: { data: "can not delete" }
     end
@@ -30,7 +30,20 @@ class Admin::AdminsController < ApplicationController
     admin_authenticated
     partner = Partner.find_by id: params[:partner_id]
     if partner.destroy
-      render json: { data: "delete success" }
+      render json: { data: "Delete Partner Successfully" }
+    else
+      render json: { data: "can not delete" }
+    end
+  end
+
+  def edit_salary
+    admin_authenticated
+
+
+    partner = Partner.find_by id: params[:partner_id]
+    salary =  params[:salary]
+    if partner.update_attributes(:cost => salary)
+      render json: { data: "Change Partner's Salary Successfully" }
     else
       render json: { data: "can not delete" }
     end
@@ -44,8 +57,19 @@ class Admin::AdminsController < ApplicationController
   # GET /admin/dashboard
   def dashboard
     admin_authenticated
+    @users_count = User.count
+    @partners_count = Partner.count
+    @booking_count = WorkingLog.count
+    @money = WorkingLog.sum(:cost)
+    @money_month = WorkingLog.where(:status => 1).where("working_date < ?", Time.now).group(:working_date).sum(:cost).to_json
+  end
+
+  # GET /admin/show_users
+  def show_users
+    admin_authenticated
     @users = User.all
   end
+
   # GET /admin/admins/new
   # def new
   #   @admin_admin = Admin::Admin.new

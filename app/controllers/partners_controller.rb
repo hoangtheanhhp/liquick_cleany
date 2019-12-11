@@ -8,6 +8,12 @@ class PartnersController < ApplicationController
     @users = Partner.all  
   end
 
+  def showWorking
+    redirect_to '/' unless partner_logged_in?
+    @working_logs = current_partner.working_logs
+    render :working_part
+  end
+
   def new
     redirect_to '/' if partner_logged_in?
     @user = Partner.new
@@ -22,7 +28,7 @@ class PartnersController < ApplicationController
       flash[:success] = "Check mail to active your account!"
       redirect_to partner_login_path
     else
-      flash[:danger] = "Register failed"
+      flash[:error] = "Register failed"
       render :new
     end
   end
@@ -110,7 +116,7 @@ class PartnersController < ApplicationController
     @user = Partner.find_by id: params[:id]
 
     return @user if @user
-    flash[:danger] = "Partner not found!"
+    flash[:error] = "Partner not found!"
     redirect_to root_path
   end
 
