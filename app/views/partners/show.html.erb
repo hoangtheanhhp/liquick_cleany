@@ -1,5 +1,6 @@
 <% content_for :for_head do %>
   <%= stylesheet_link_tag 'custom/profile', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
 <% end %>
 
 <% content_for :for_content do %>
@@ -96,7 +97,7 @@
               </button>
             </div>
           </div>
-
+          
         <% end %>
 
       </div>
@@ -146,5 +147,6 @@
                 })
             }
         });
+
     </script>
 <% end %>

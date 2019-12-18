@@ -91,3 +91,31 @@ WorkingLog.create!(
         content: Faker::Lorem.paragraph
     )
 end
+
+
+100.times do
+    begin
+        user_id = rand(4..6)
+        partner_id = rand(1..6)
+        worktime_start = rand(7..9)
+        worktime_end = worktime_start + rand(1..3)
+        cost= rand(300..1000)
+        working_date = Time.at(rand(DateTime.now.days_ago(15).to_f..DateTime.now.days_ago(2).to_f)).to_date
+
+        if WorkingLog.where(:partner => partner_id).where(:working_date => working_date).where("worktime_end > ?", worktime_start).empty?
+            WorkingLog.create!(
+                user_id: user_id,
+                partner_id: partner_id,
+                worktime_start: worktime_start,
+                worktime_end: worktime_end,
+                address: "Thanh Xuan, Ha Noi",
+                cost: cost,
+                working_date: working_date,
+                status: 1,
+                note: Faker::Lorem.paragraph
+            )
+        end
+    rescue Exception => e 
+        print "="
+    end
+end

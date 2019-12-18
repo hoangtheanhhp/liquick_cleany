@@ -1,4 +1,5 @@
 <% content_for :for_head do %>
+<script src="https://www.chartjs.org/samples/latest/utils.js"></script>
 <% end %>
 
 <% content_for :for_content do %>
@@ -51,7 +52,14 @@
           </tbody>
         </table>
       </div>
-
+      <% if partner_logged_in? %>
+        <h1 style="font-size:30px; margin-bottom: 50px;">Income chart</h1>
+          <div class="card-body">
+            <div class="tab-content p-0">
+              <div class="wrapper"><canvas id="chart-2" style="height: 250px;"></canvas></div>
+            </div>
+          </div>
+      <% end %>
       <div class="col-12" style="height: 100px;">
       </div>
     </div>
@@ -114,5 +122,67 @@
                $("#accept-btn-"+wid).remove();
             });
     }
+
+    var month_data = JSON.parse(new DOMParser().parseFromString("<%=@money_month%>", 'text/html').body.textContent);
+
+var presets = window.chartColors;
+var utils = Samples.utils;
+var inputs = {
+    min: -100,
+    max: 100,
+    count: 8,
+    decimals: 2,
+    continuity: 1
+};
+
+		var options = {
+			maintainAspectRatio: false,
+			spanGaps: false,
+			elements: {
+				line: {
+					tension: 0.000001
+				}
+			},
+			plugins: {
+				filler: {
+					propagate: false
+				}
+			},
+			scales: {
+				xAxes: [{
+					ticks: {
+						autoSkip: false,
+						maxRotation: 0
+					}
+				}]
+			}
+		};
+
+			// reset the random seed to generate the same data for all charts
+			utils.srand(8);
+
+			var money_chart = new Chart('chart-2', {
+				type: 'line',
+				data: {
+					labels: Object.keys(month_data).map(x=> x.split('-')[2]),
+					datasets: [{
+						backgroundColor: utils.transparentize(presets.red),
+						borderColor: presets.red,
+						data: Object.values(month_data),
+						label: 'Thousand VND',
+						fill: 'start'
+					}]
+				},
+				options: Chart.helpers.merge(options, {
+					title: {
+						text: (new Date().getFullYear())+'/' +(1+new Date().getMonth()),
+						display: true
+					}
+				})
+			});
+
+
+      money_chart.options.elements.line.tension = 0.4;
+      money_chart.update();
   </script>
 <% end %>
