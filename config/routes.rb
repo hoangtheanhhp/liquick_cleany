@@ -55,5 +55,6 @@ Rails.application.routes.draw do
 
   get '/partner_detail/:id', to: 'homes#partner_detail', as: 'partner_detail'
   post 'createComment' => 'users#createComment', as: 'create_comment'
+  post 'deleteComment' => 'homes#delete_comment'
   
 end

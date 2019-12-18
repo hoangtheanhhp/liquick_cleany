@@ -12,6 +12,15 @@ class HomesController < ApplicationController
     redirect_to root_path
   end
 
+  def delete_comment
+    comment = Comment.find_by id: params[:comment_id]
+    if comment.destroy
+      render json: { data: "Delete Comment Successfully" }
+    else
+      render json: { data: "Can not delete" }
+    end
+  end
+
   def get_district
     city_code = params['city_code']
     @districts = JSON.parse(File.read(Rails.root.join('db/quan-huyen/' + city_code + '.json')))

@@ -1360,7 +1360,7 @@ input:focus {
     height: 70px;
     border-radius: 50%; }
     .comment_area .comment-content .comment-author img {
-      border-radius: 50%; }
+      border-radius: 5%; }
     @media only screen and (max-width: 767px) {
       .comment_area .comment-content .comment-author {
         -webkit-box-flex: 0;
@@ -1370,16 +1370,16 @@ input:focus {
         margin-right: 10px;
         height: 40px; } }
   .comment_area .comment-content .comment-meta {
-    margin-bottom: 30px; }
+    margin-bottom: 10px; }
     .comment_area .comment-content .comment-meta .comment-date {
       font-size: 12px;
       color: #a6a6a6;
       text-transform: uppercase;
       letter-spacing: 2px;
-      margin-bottom: 10px;
+      margin-bottom: 0px;
       display: block; }
     .comment_area .comment-content .comment-meta h6 {
-      margin-bottom: 10px; }
+      margin-bottom: 5px; }
     .comment_area .comment-content .comment-meta p {
       margin-bottom: 10px;
       font-size: 14px;
@@ -1409,7 +1409,7 @@ input:focus {
         .comment_area .comment-content .comment-meta .reply {
           margin-right: 5px; } }
   .comment_area .single_comment_area {
-    margin-bottom: 30px; }
+    margin-bottom: 0px; }
     .comment_area .single_comment_area:last-of-type {
       margin-bottom: 0; }
   .comment_area .children .single_comment_area {
@@ -1994,4 +1994,9 @@ textarea.form-control {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.toast-top-right {
+  bottom: 12px !important;
+  top: auto !important;
 }
