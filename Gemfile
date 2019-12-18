@@ -27,9 +27,9 @@ group :development do
   gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
   gem 'carrierwave', '~> 2.0', '>= 2.0.2'
   gem 'mini_magick', '~> 4.9', '>= 4.9.5'
-  gem 'kaminari', '~> 1.1', '>= 1.1.1'
   gem 'faker', '~> 1.6', '>= 1.6.6'
   gem 'toastr-rails', '~> 1.0', '>= 1.0.3'
+  gem 'will_paginate'
 end
 
 group :test do
