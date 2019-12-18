@@ -58,7 +58,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3><%= @money %></h3>
+                <h3><%= number_to_currency(@money*1000, unit: "", locale: :vi, precision: 0, format: "%n %u") %></h3>
 
                 <p>Total money</p>
               </div>

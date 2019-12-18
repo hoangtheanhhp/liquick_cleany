@@ -11,6 +11,7 @@ class PartnersController < ApplicationController
   def showWorking
     redirect_to '/' unless partner_logged_in?
     @working_logs = current_partner.working_logs
+    @money_month = WorkingLog.where(:partner => current_partner).where("working_date < ?", Time.now).group(:working_date).sum(:cost).to_json
     render :working_part
   end
 
@@ -34,6 +35,7 @@ class PartnersController < ApplicationController
   end
 
   def show
+    @money_month = WorkingLog.where(:partner => current_partner).where("working_date < ?", Time.now).group(:working_date).sum(:cost).to_json
   end
 
   def edit; end
