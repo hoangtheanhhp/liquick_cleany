@@ -16,6 +16,7 @@ class Partner < ApplicationRecord
   has_secure_password
 
   has_many :working_logs, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
   def remember
     @remember_token = Partner.new_token

@@ -85,15 +85,9 @@ WorkingLog.create!(
 )
 
 100.times do
-    WorkingLog.create!(
+    Comment.create!(
         user_id: rand(1..8),
         partner_id: rand(1..8),
-        worktime_start: rand(6..10),
-        worktime_end: rand(11..12),
-        address: "Thanh Xuan, Ha Noi",
-        cost: rand(1000..2000),
-        working_date: Time.at(rand(Date.new(2019,12,1).to_time.to_f..2.days.ago.to_f)).to_date,
-        status: 1,
-        note: 'Hello! Help me clean my room'
+        content: Faker::Lorem.paragraph
     )
 end

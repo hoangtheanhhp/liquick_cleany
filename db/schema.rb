@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_25_125126) do
+ActiveRecord::Schema.define(version: 2019_12_11_180608) do
 
   create_table "admin_admins", force: :cascade do |t|
     t.string "name", default: "Cleany Admin"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2019_11_25_125126) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_admins_on_email", unique: true
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "partner_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["partner_id"], name: "index_comments_on_partner_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "partners", force: :cascade do |t|
